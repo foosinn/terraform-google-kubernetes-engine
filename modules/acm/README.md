@@ -95,6 +95,7 @@ data "google_client_config" "default" {}
 | policy\_bundles | A list of Policy Controller policy bundles git urls (example: https://github.com/GoogleCloudPlatform/acm-policy-controller-library.git/bundles/policy-essentials-v2022) to install on the cluster. | `list(string)` | `[]` | no |
 | policy\_dir | Subfolder containing configs in ACM Git repo. If un-set, uses Config Management default. | `string` | `""` | no |
 | project\_id | GCP project\_id used to reach cluster. | `string` | n/a | yes |
+| restart\_gatekeeper\_controller\_manager | Restart the gatekeeper controller manager after setting up workload id (needs to be done manually if a proxy to gke api is required) | `bool` | `true` | no |
 | secret\_type | git authentication secret type, is passed through to ConfigManagement spec.git.secretType. Overriden to value 'ssh' if `create_ssh_key` is true | `string` | `"ssh"` | no |
 | source\_format | Configures a non-hierarchical repo if set to 'unstructured'. Uses [ACM defaults](https://cloud.google.com/anthos-config-management/docs/how-to/installing#configuring-config-management-operator) when unset. | `string` | `""` | no |
 | ssh\_auth\_key | Key for Git authentication. Overrides 'create\_ssh\_key' variable. Can be set using 'file(path/to/file)'-function. | `string` | `null` | no |
